@@ -80,7 +80,7 @@ export default function About() {
                 transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
                 className="group p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-carbon-700/50 neon-border card-hover"
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-neon flex items-center justify-center mb-3 sm:mb-4 group-hover:neon-glow transition-all duration-300">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-gold flex items-center justify-center mb-3 sm:mb-4 group-hover:neon-glow transition-all duration-300">
                   <feature.icon size={20} className="text-white sm:hidden" />
                   <feature.icon size={24} className="text-white hidden sm:block" />
                 </div>

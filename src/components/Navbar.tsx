@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import Image from 'next/image'
 
 const navLinks = [
   { name: 'Work', href: '#work' },
@@ -34,10 +35,14 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center group transition-transform duration-300 group-hover:scale-105">
-            <span className="text-2xl md:text-3xl font-bold tracking-tight">
-              <span className="text-white">Cut</span>
-              <span className="text-gradient-neon">Edge</span>
-            </span>
+            <Image
+              src="/logo.png"
+              alt="CutEdge Agency"
+              width={120}
+              height={45}
+              className="h-10 sm:h-12 w-auto object-contain mix-blend-lighten"
+              priority
+            />
           </a>
 
           {/* Desktop Navigation */}
@@ -50,7 +55,7 @@ export default function Navbar() {
                     className="relative text-white/70 hover:text-white font-medium transition-colors duration-300 group"
                   >
                     {link.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-neon transition-all duration-300 group-hover:w-full" />
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-gold transition-all duration-300 group-hover:w-full" />
                   </a>
                 </li>
               ))}

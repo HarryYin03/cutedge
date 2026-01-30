@@ -1,6 +1,7 @@
 'use client'
 
 import { Instagram, ExternalLink } from 'lucide-react'
+import Image from 'next/image'
 
 const TikTokIcon = ({ size = 20 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
@@ -19,10 +20,13 @@ export default function Footer() {
           <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-6">
             {/* Logo & Copyright */}
             <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
-              <span className="text-lg sm:text-xl font-bold tracking-tight">
-                <span className="text-white">Cut</span>
-                <span className="text-gradient-neon">Edge</span>
-              </span>
+              <Image
+                src="/logo.png"
+                alt="CutEdge Agency"
+                width={100}
+                height={36}
+                className="h-8 sm:h-10 w-auto object-contain mix-blend-lighten"
+              />
               <div className="text-white/50 text-xs sm:text-sm">
                 © {currentYear} All rights reserved.
               </div>
@@ -34,7 +38,7 @@ export default function Footer() {
                 href="https://www.tiktok.com/@cutedge.agency"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 hover:text-neon-blue transition-all duration-300"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 hover:text-gold transition-all duration-300"
                 aria-label="TikTok"
               >
                 <TikTokIcon size={16} />
@@ -43,14 +47,14 @@ export default function Footer() {
                 href="https://www.instagram.com/cutedge_agency"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 hover:text-neon-pink transition-all duration-300"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 hover:text-gold-dark transition-all duration-300"
                 aria-label="Instagram"
               >
                 <Instagram size={16} />
               </a>
               <a
                 href="mailto:cutedgeagency@gmail.com"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 hover:text-neon-purple transition-all duration-300"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 hover:text-gold transition-all duration-300"
                 aria-label="Email"
               >
                 <ExternalLink size={16} />

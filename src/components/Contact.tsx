@@ -19,20 +19,44 @@ export default function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError('')
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: 'ff64ac4b-9a0a-4a54-9ab3-a97d77984e8c',
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `New Contact from ${formData.name} - CutEdge Agency`,
+          from_name: 'CutEdge Agency Website',
+          replyto: formData.email,
+        }),
+      })
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    setFormData({ name: '', email: '', message: '' })
+      const result = await response.json()
 
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000)
+      if (result.success) {
+        setIsSubmitted(true)
+        setFormData({ name: '', email: '', message: '' })
+        setTimeout(() => setIsSubmitted(false), 5000)
+      } else {
+        setError('Failed to send message. Please try again.')
+      }
+    } catch {
+      setError('Failed to send message. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -48,8 +72,8 @@ export default function Contact() {
       <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-carbon-800 to-transparent" />
 
       {/* Decorative elements - hidden on small screens */}
-      <div className="hidden sm:block absolute top-1/4 right-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-neon-purple/10 rounded-full blur-[100px] md:blur-[150px]" />
-      <div className="hidden sm:block absolute bottom-1/4 left-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-neon-blue/10 rounded-full blur-[100px] md:blur-[150px]" />
+      <div className="hidden sm:block absolute top-1/4 right-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-gold/5 rounded-full blur-[100px] md:blur-[150px]" />
+      <div className="hidden sm:block absolute bottom-1/4 left-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-gold-dark/5 rounded-full blur-[100px] md:blur-[150px]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section Header */}
@@ -80,7 +104,7 @@ export default function Contact() {
             {/* Email */}
             <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-carbon-800/50 neon-border">
               <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-neon flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-gold flex items-center justify-center flex-shrink-0">
                   <Mail size={20} className="text-white sm:hidden" />
                   <Mail size={24} className="text-white hidden sm:block" />
                 </div>
@@ -129,15 +153,15 @@ export default function Contact() {
               <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Quick Info</h3>
               <ul className="space-y-2 sm:space-y-3 text-white/70 text-sm sm:text-base">
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-neon-blue flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gold flex-shrink-0" />
                   Average response time: 2-4 hours
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-neon-purple flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gold-dark flex-shrink-0" />
                   Project turnaround: 24-72 hours
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-neon-pink flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gold-darker flex-shrink-0" />
                   Unlimited revisions on all packages
                 </li>
               </ul>
@@ -164,7 +188,7 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 sm:px-5 py-3 sm:py-4 rounded-lg sm:rounded-xl bg-carbon-800 border border-white/10 text-white text-sm sm:text-base placeholder-white/30 focus:border-neon-blue focus:outline-none focus:ring-1 focus:ring-neon-blue transition-all duration-300"
+                  className="w-full px-4 sm:px-5 py-3 sm:py-4 rounded-lg sm:rounded-xl bg-carbon-800 border border-white/10 text-white text-sm sm:text-base placeholder-white/30 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-all duration-300"
                   placeholder="John Doe"
                 />
               </div>
@@ -181,7 +205,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 sm:px-5 py-3 sm:py-4 rounded-lg sm:rounded-xl bg-carbon-800 border border-white/10 text-white text-sm sm:text-base placeholder-white/30 focus:border-neon-blue focus:outline-none focus:ring-1 focus:ring-neon-blue transition-all duration-300"
+                  className="w-full px-4 sm:px-5 py-3 sm:py-4 rounded-lg sm:rounded-xl bg-carbon-800 border border-white/10 text-white text-sm sm:text-base placeholder-white/30 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-all duration-300"
                   placeholder="john@example.com"
                 />
               </div>
@@ -198,7 +222,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={4}
-                  className="w-full px-4 sm:px-5 py-3 sm:py-4 rounded-lg sm:rounded-xl bg-carbon-800 border border-white/10 text-white text-sm sm:text-base placeholder-white/30 focus:border-neon-blue focus:outline-none focus:ring-1 focus:ring-neon-blue transition-all duration-300 resize-none sm:rows-5"
+                  className="w-full px-4 sm:px-5 py-3 sm:py-4 rounded-lg sm:rounded-xl bg-carbon-800 border border-white/10 text-white text-sm sm:text-base placeholder-white/30 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-all duration-300 resize-none sm:rows-5"
                   placeholder="Tell us about your project..."
                 />
               </div>
@@ -211,7 +235,7 @@ export default function Contact() {
               >
                 {isSubmitting ? (
                   <>
-                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
                     Sending...
                   </>
                 ) : (
@@ -222,6 +246,17 @@ export default function Contact() {
                   </>
                 )}
               </button>
+
+              {/* Error Message */}
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-3 sm:p-4 rounded-lg bg-red-500/20 border border-red-500/50 text-red-300 text-sm text-center"
+                >
+                  {error}
+                </motion.div>
+              )}
 
               {/* Success Message */}
               {isSubmitted && (

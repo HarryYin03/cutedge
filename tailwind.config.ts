@@ -8,12 +8,12 @@ const config: Config = {
   ],
   theme: {
     screens: {
-      'xs': '475px',
-      'sm': '640px',
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1280px',
-      '2xl': '1536px',
+      xs: "475px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
     },
     extend: {
       colors: {
@@ -25,9 +25,15 @@ const config: Config = {
           500: "#2e2e2e",
         },
         neon: {
-          blue: "#00d4ff",
-          purple: "#a855f7",
-          pink: "#ec4899",
+          blue: "#d4af37",
+          purple: "#b8860b",
+          pink: "#8b6914",
+        },
+        gold: {
+          light: "#f5d98e",
+          DEFAULT: "#d4af37",
+          dark: "#b8860b",
+          darker: "#8b6914",
         },
       },
       fontFamily: {
@@ -41,8 +47,8 @@ const config: Config = {
       },
       keyframes: {
         glow: {
-          "0%": { boxShadow: "0 0 20px rgba(0, 212, 255, 0.3)" },
-          "100%": { boxShadow: "0 0 40px rgba(168, 85, 247, 0.5)" },
+          "0%": { boxShadow: "0 0 20px rgba(212, 175, 55, 0.3)" },
+          "100%": { boxShadow: "0 0 40px rgba(184, 134, 11, 0.5)" },
         },
         float: {
           "0%, 100%": { transform: "translateY(0)" },
@@ -60,7 +66,9 @@ const config: Config = {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-neon":
-          "linear-gradient(135deg, #00d4ff 0%, #a855f7 50%, #ec4899 100%)",
+          "linear-gradient(135deg, #f5d98e 0%, #d4af37 50%, #b8860b 100%)",
+        "gradient-gold":
+          "linear-gradient(135deg, #f5d98e 0%, #d4af37 30%, #b8860b 60%, #8b6914 100%)",
       },
     },
   },

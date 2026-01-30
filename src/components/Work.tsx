@@ -137,7 +137,7 @@ export default function Work() {
 
                 {/* Play Button */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-neon flex items-center justify-center neon-glow">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-gold flex items-center justify-center neon-glow">
                     <Play size={20} className="text-white ml-0.5 sm:ml-1 sm:hidden" fill="white" />
                     <Play size={24} className="text-white ml-1 hidden sm:block" fill="white" />
                   </div>
@@ -197,7 +197,7 @@ export default function Work() {
               {/* Project Info */}
               <div className="p-4 sm:p-6 md:p-8">
                 <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                  <span className="px-2 sm:px-3 py-1 text-xs font-medium rounded-full bg-gradient-neon">
+                  <span className="px-2 sm:px-3 py-1 text-xs font-medium rounded-full bg-gradient-gold text-black">
                     {selectedProject.category}
                   </span>
                   <span className="text-white/50 text-xs sm:text-sm">{selectedProject.platform}</span>

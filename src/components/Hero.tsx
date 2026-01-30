@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function Hero() {
   return (
@@ -9,10 +10,10 @@ export default function Hero() {
       <div className="absolute inset-0 bg-grid opacity-50" />
       <div className="absolute inset-0 bg-noise" />
 
-      {/* Animated gradient orbs - hidden on very small screens for performance */}
-      <div className="hidden sm:block absolute top-1/4 left-1/4 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-neon-blue/10 rounded-full blur-[80px] md:blur-[120px] animate-float" />
-      <div className="hidden sm:block absolute bottom-1/4 right-1/4 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-neon-purple/10 rounded-full blur-[80px] md:blur-[120px] animate-float" style={{ animationDelay: '-3s' }} />
-      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[450px] lg:w-[600px] h-[300px] md:h-[450px] lg:h-[600px] bg-neon-pink/5 rounded-full blur-[100px] md:blur-[150px]" />
+      {/* Animated gradient orbs - subtle gold accents */}
+      <div className="hidden sm:block absolute top-1/4 left-1/4 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-gold/5 rounded-full blur-[80px] md:blur-[120px] animate-float" />
+      <div className="hidden sm:block absolute bottom-1/4 right-1/4 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-gold-dark/5 rounded-full blur-[80px] md:blur-[120px] animate-float" style={{ animationDelay: '-3s' }} />
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[450px] lg:w-[600px] h-[300px] md:h-[450px] lg:h-[600px] bg-gold-darker/3 rounded-full blur-[100px] md:blur-[150px]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
         {/* Logo Badge */}
@@ -20,13 +21,16 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 rounded-full glass neon-border mb-6 sm:mb-10"
+          className="mb-6 sm:mb-10"
         >
-          <span className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight">
-            <span className="text-white">Cut</span>
-            <span className="text-gradient-neon">Edge</span>
-            <span className="text-white/70 font-medium ml-1 sm:ml-2">Agency</span>
-          </span>
+          <Image
+            src="/logo.png"
+            alt="CutEdge Agency"
+            width={280}
+            height={100}
+            className="h-24 sm:h-28 md:h-32 w-auto object-contain mx-auto mix-blend-lighten"
+            priority
+          />
         </motion.div>
 
         {/* Main Headline */}
@@ -78,26 +82,6 @@ export default function Hero() {
         </motion.div>
 
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-2"
-        >
-          <motion.div
-            animate={{ height: ['20%', '80%', '20%'] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 bg-gradient-neon rounded-full"
-          />
-        </motion.div>
-      </motion.div>
     </section>
   )
 }
