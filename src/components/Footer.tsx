@@ -1,6 +1,6 @@
 'use client'
 
-import { Instagram, ExternalLink } from 'lucide-react'
+import { Instagram, ExternalLink, Youtube } from 'lucide-react'
 import Image from 'next/image'
 
 const TikTokIcon = ({ size = 20 }: { size?: number }) => (
@@ -51,6 +51,15 @@ export default function Footer() {
                 aria-label="Instagram"
               >
                 <Instagram size={16} />
+              </a>
+              <a
+                href="https://www.youtube.com/@cutedgeagency"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 hover:text-gold transition-all duration-300"
+                aria-label="YouTube"
+              >
+                <Youtube size={16} />
               </a>
               <a
                 href="mailto:cutedgeagency@gmail.com"

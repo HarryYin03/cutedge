@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Send, Instagram, ExternalLink } from 'lucide-react'
+import { Mail, Send, Instagram, ExternalLink, Youtube } from 'lucide-react'
 
 // TikTok icon component since lucide doesn't have it
 const TikTokIcon = ({ size = 24 }: { size?: number }) => (
@@ -143,6 +143,16 @@ export default function Contact() {
                 >
                   <Instagram size={20} />
                   <span className="font-medium text-sm sm:text-base">Instagram</span>
+                  <ExternalLink size={14} className="opacity-50 group-hover:opacity-100 transition-opacity" />
+                </a>
+                <a
+                  href="https://www.youtube.com/@cutedgeagency"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-5 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300"
+                >
+                  <Youtube size={20} />
+                  <span className="font-medium text-sm sm:text-base">YouTube</span>
                   <ExternalLink size={14} className="opacity-50 group-hover:opacity-100 transition-opacity" />
                 </a>
               </div>
