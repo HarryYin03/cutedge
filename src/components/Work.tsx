@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Play } from 'lucide-react'
+import { X, Play, ExternalLink } from 'lucide-react'
 
 type ProjectCategory = 'All' | 'Shorts/Reels' | 'Ads' | 'YouTube' | 'Corporate'
 
@@ -158,7 +158,7 @@ export default function Work() {
         </motion.div>
       </div>
 
-      {/* Modal/Lightbox */}
+      {/* Modal/Lightbox - Premium Design */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -169,51 +169,84 @@ export default function Work() {
             className="fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-2 sm:p-4 overflow-y-auto"
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-4xl bg-carbon-800 rounded-xl sm:rounded-2xl overflow-hidden neon-border my-4 sm:my-0"
+              className="relative w-full max-w-5xl my-4 sm:my-0"
             >
-              {/* Close Button */}
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors"
-              >
-                <X size={18} className="sm:hidden" />
-                <X size={20} className="hidden sm:block" />
-              </button>
+              {/* Glowing border effect */}
+              <div className="absolute -inset-[2px] bg-gradient-to-r from-gold-light via-gold to-gold-dark rounded-2xl sm:rounded-3xl blur-sm opacity-75" />
 
-              {/* Video Embed - taller aspect ratio on mobile for TikTok */}
-              <div className="aspect-[9/16] sm:aspect-video">
-                <iframe
-                  src={selectedProject.videoUrl}
-                  className="w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
+              {/* Main content container */}
+              <div className="relative bg-carbon-900 rounded-2xl sm:rounded-3xl overflow-hidden">
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-black/70 hover:border-gold/50 transition-all duration-300 group"
+                >
+                  <X size={20} className="text-white/70 group-hover:text-gold transition-colors" />
+                </button>
 
-              {/* Project Info */}
-              <div className="p-4 sm:p-6 md:p-8">
-                <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                  <span className="px-2 sm:px-3 py-1 text-xs font-medium rounded-full bg-gradient-gold text-black">
-                    {selectedProject.category}
-                  </span>
-                  <span className="text-white/50 text-xs sm:text-sm">{selectedProject.platform}</span>
-                </div>
+                {/* Layout: Side by side on desktop */}
+                <div className="flex flex-col lg:flex-row">
+                  {/* Left side - Project Info */}
+                  <div className="lg:w-2/5 p-6 sm:p-8 lg:p-10 flex flex-col justify-center order-2 lg:order-1 bg-gradient-to-br from-carbon-800 to-carbon-900">
+                    {/* Category & Platform */}
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                      <span className="px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-bold rounded-full bg-gradient-gold text-black uppercase tracking-wide">
+                        {selectedProject.category}
+                      </span>
+                      <span className="text-gold/70 text-xs sm:text-sm font-medium">{selectedProject.platform}</span>
+                    </div>
 
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-4">{selectedProject.title}</h3>
-                <p className="text-white/70 text-sm sm:text-base mb-4 sm:mb-6">{selectedProject.description}</p>
+                    {/* Title */}
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-3 sm:mb-4 text-white leading-tight">
+                      {selectedProject.title}
+                    </h3>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                  <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white/5">
-                    <div className="text-xs sm:text-sm text-white/50 mb-1">Goal</div>
-                    <div className="text-white font-medium text-sm sm:text-base">{selectedProject.goal}</div>
+                    {/* Description */}
+                    <p className="text-white/60 text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 leading-relaxed">
+                      {selectedProject.description}
+                    </p>
+
+                    {/* Stats/Info Cards */}
+                    <div className="space-y-3 sm:space-y-4">
+                      <div className="p-4 sm:p-5 rounded-xl bg-white/5 border border-white/5 hover:border-gold/20 transition-colors">
+                        <div className="text-gold/80 text-xs sm:text-sm font-semibold uppercase tracking-wider mb-1">Goal</div>
+                        <div className="text-white font-medium text-sm sm:text-base">{selectedProject.goal}</div>
+                      </div>
+                      <div className="p-4 sm:p-5 rounded-xl bg-white/5 border border-white/5 hover:border-gold/20 transition-colors">
+                        <div className="text-gold/80 text-xs sm:text-sm font-semibold uppercase tracking-wider mb-1">Style</div>
+                        <div className="text-white font-medium text-sm sm:text-base">{selectedProject.style}</div>
+                      </div>
+                    </div>
+
+                    {/* CTA Button */}
+                    <a
+                      href="#contact"
+                      onClick={() => setSelectedProject(null)}
+                      className="mt-6 sm:mt-8 inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-4 bg-gradient-gold text-black font-bold rounded-xl hover:shadow-lg hover:shadow-gold/30 transition-all duration-300 text-sm sm:text-base"
+                    >
+                      Order Similar Edit
+                      <ExternalLink size={16} />
+                    </a>
                   </div>
-                  <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white/5">
-                    <div className="text-xs sm:text-sm text-white/50 mb-1">Style</div>
-                    <div className="text-white font-medium text-sm sm:text-base">{selectedProject.style}</div>
+
+                  {/* Right side - Video */}
+                  <div className="lg:w-3/5 order-1 lg:order-2 relative">
+                    {/* Video container with aspect ratio */}
+                    <div className="aspect-[9/16] sm:aspect-[9/14] lg:aspect-[9/16] max-h-[70vh] lg:max-h-[85vh]">
+                      <iframe
+                        src={selectedProject.videoUrl}
+                        className="w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    </div>
+                    {/* Gradient overlay at bottom for blend */}
+                    <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-carbon-800 to-transparent lg:hidden" />
                   </div>
                 </div>
               </div>
