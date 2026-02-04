@@ -33,6 +33,20 @@ export default function Hero() {
           />
         </motion.div>
 
+        {/* Promo Banner */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mb-6 sm:mb-8"
+        >
+          <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-gradient-gold text-black font-bold text-xs sm:text-sm md:text-base animate-pulse">
+            <span className="text-lg sm:text-xl">🔥</span>
+            <span>LIMITED OFFER: 50% OFF for first 10 customers!</span>
+            <span className="text-lg sm:text-xl">🔥</span>
+          </div>
+        </motion.div>
+
         {/* Main Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
