@@ -23,8 +23,8 @@ export default function Footer() {
               <Image
                 src="/logo.png"
                 alt="CutEdge Agency"
-                width={100}
-                height={36}
+                width={62}
+                height={40}
                 className="h-8 sm:h-10 w-auto object-contain mix-blend-lighten"
               />
               <div className="text-white/50 text-xs sm:text-sm">
@@ -72,6 +72,9 @@ export default function Footer() {
 
             {/* Quick Links */}
             <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm">
+              <a href="#services" className="text-white/50 hover:text-white transition-colors">
+                Services
+              </a>
               <a href="#work" className="text-white/50 hover:text-white transition-colors">
                 Work
               </a>

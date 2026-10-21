@@ -27,8 +27,8 @@ export default function Hero() {
             src="/logo.png"
             alt="CutEdge Agency"
             width={280}
-            height={100}
-            className="h-24 sm:h-28 md:h-32 w-auto object-contain mx-auto mix-blend-lighten"
+            height={181}
+            className="h-28 sm:h-36 md:h-44 w-auto object-contain mx-auto mix-blend-lighten"
             priority
           />
         </motion.div>

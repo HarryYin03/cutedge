@@ -6,6 +6,7 @@ import { Menu, X } from 'lucide-react'
 import Image from 'next/image'
 
 const navLinks = [
+  { name: 'Services', href: '#services' },
   { name: 'Work', href: '#work' },
   { name: 'About', href: '#about' },
   { name: 'Contact', href: '#contact' },
@@ -38,8 +39,8 @@ export default function Navbar() {
             <Image
               src="/logo.png"
               alt="CutEdge Agency"
-              width={120}
-              height={45}
+              width={79}
+              height={51}
               className="h-10 sm:h-12 w-auto object-contain mix-blend-lighten"
               priority
             />

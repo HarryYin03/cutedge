@@ -82,6 +82,43 @@ const projects: Project[] = [
   },
 ]
 
+/*
+ * PHOTOGRAPHY: save images in public/photos/ and list them here,
+ * e.g. { src: '/photos/fragrance-1.jpg', alt: 'Fragrance bottle on marble' }
+ */
+const photos: { src: string; alt: string }[] = []
+
+/*
+ * SHOWCASE VIDEOS: save videos in public/videos/ (MP4/H.264 plays everywhere)
+ */
+const showcases = [
+  {
+    heading: 'Cinematic Short Form Video',
+    description: 'Moody, cinematic product storytelling built for Reels and TikTok.',
+    videos: [{ src: '/videos/watch-cinematic.mov', poster: '/videos/watch-cinematic-poster.png', title: 'Watch Campaign' }],
+  },
+  {
+    heading: 'Gaming Cafe Shoot',
+    description: 'On-location shoot capturing the energy and atmosphere of a gaming venue.',
+    videos: [{ src: '/videos/gaming-cafe.mov', poster: '/videos/gaming-cafe-poster.png', title: 'Gaming Cafe' }],
+  },
+]
+
+function SubHeading({ title, description }: { title: string; description: string }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="mb-4 sm:mb-8"
+    >
+      <h3 className="text-base xs:text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">{title}</h3>
+      <p className="text-white/60 text-xs sm:text-base">{description}</p>
+    </motion.div>
+  )
+}
+
 export default function Work() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
@@ -138,8 +175,8 @@ export default function Work() {
                 {/* Play Button */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-gold flex items-center justify-center neon-glow">
-                    <Play size={20} className="text-white ml-0.5 sm:ml-1 sm:hidden" fill="white" />
-                    <Play size={24} className="text-white ml-1 hidden sm:block" fill="white" />
+                    <Play size={20} className="text-black ml-0.5 sm:ml-1 sm:hidden" fill="black" />
+                    <Play size={24} className="text-black ml-1 hidden sm:block" fill="black" />
                   </div>
                 </div>
 
@@ -156,6 +193,63 @@ export default function Work() {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* Video Showcases */}
+        <div className="mt-16 sm:mt-24 grid grid-cols-2 gap-3 sm:gap-6 lg:gap-10 max-w-4xl mx-auto">
+        {showcases.map((showcase) => (
+          <div key={showcase.heading} className="flex flex-col">
+            <SubHeading title={showcase.heading} description={showcase.description} />
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 mt-auto">
+              {showcase.videos.map((video) => (
+                <motion.div
+                  key={video.src}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="relative aspect-[9/16] rounded-xl sm:rounded-2xl overflow-hidden neon-border"
+                >
+                  <video
+                    src={video.src}
+                    poster={video.poster}
+                    title={video.title}
+                    className="w-full h-full object-cover"
+                    controls
+                    playsInline
+                    preload="metadata"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        ))}
+        </div>
+
+        {/* Photography */}
+        {photos.length > 0 && (
+          <div className="mt-16 sm:mt-24">
+            <SubHeading title="Photography" description="Premium fragrance and product photography." />
+            <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+              {photos.map((photo) => (
+                <motion.div
+                  key={photo.src}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="group relative aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden neon-border"
+                >
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Modal/Lightbox - Premium Design */}

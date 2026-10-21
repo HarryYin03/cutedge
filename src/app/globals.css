@@ -5,12 +5,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-  --gold-light: #d4af37;
-  --gold: #b8860b;
-  --gold-dark: #8b6914;
-  --neon-blue: #d4af37;
-  --neon-purple: #b8860b;
-  --neon-pink: #8b6914;
+  --gold-light: #e5e5e5;
+  --gold: #a3a3a3;
+  --gold-dark: #737373;
+  --neon-blue: #e5e5e5;
+  --neon-purple: #a3a3a3;
+  --neon-pink: #737373;
 }
 
 * {
@@ -80,9 +80,9 @@ body {
 
 .neon-glow {
   box-shadow:
-    0 0 20px rgba(212, 175, 55, 0.3),
-    0 0 40px rgba(184, 134, 11, 0.2),
-    0 0 60px rgba(139, 105, 20, 0.1);
+    0 0 20px rgba(255, 255, 255, 0.3),
+    0 0 40px rgba(200, 200, 200, 0.2),
+    0 0 60px rgba(150, 150, 150, 0.1);
 }
 
 /* Glassmorphism */
@@ -95,14 +95,14 @@ body {
 /* Button styles */
 .btn-primary {
   @apply relative px-5 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-black overflow-hidden transition-all duration-300 text-sm sm:text-base;
-  background: linear-gradient(135deg, #f5d98e, #d4af37, #b8860b);
+  background: linear-gradient(135deg, #ffffff, #e5e5e5, #a3a3a3);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow:
-    0 10px 40px rgba(212, 175, 55, 0.4),
-    0 0 60px rgba(184, 134, 11, 0.3);
+    0 10px 40px rgba(255, 255, 255, 0.4),
+    0 0 60px rgba(200, 200, 200, 0.3);
 }
 
 /* Touch devices - apply active state on tap */
@@ -120,7 +120,7 @@ body {
 .btn-secondary:hover {
   border-color: var(--gold-light);
   color: var(--gold-light);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 @media (hover: none) {
@@ -138,7 +138,7 @@ body {
   transform: translateY(-4px) scale(1.01);
   box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.4),
-    0 0 40px rgba(212, 175, 55, 0.1);
+    0 0 40px rgba(255, 255, 255, 0.1);
 }
 
 @media (min-width: 640px) {
@@ -159,7 +159,7 @@ body {
   background-size: 60px 60px;
 }
 
-/* City lights background effect - metallic black with gold */
+/* City lights background effect - black and white */
 .bg-city-lights {
   position: relative;
   background:
@@ -174,9 +174,9 @@ body {
   right: 0;
   bottom: 0;
   background:
-    radial-gradient(ellipse at 20% 30%, rgba(212, 175, 55, 0.06) 0%, transparent 40%),
-    radial-gradient(ellipse at 80% 70%, rgba(184, 134, 11, 0.05) 0%, transparent 40%),
-    radial-gradient(ellipse at 50% 50%, rgba(139, 105, 20, 0.03) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 30%, rgba(255, 255, 255, 0.06) 0%, transparent 40%),
+    radial-gradient(ellipse at 80% 70%, rgba(200, 200, 200, 0.05) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 50%, rgba(150, 150, 150, 0.03) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -202,7 +202,7 @@ body {
 }
 
 .text-gradient-gold {
-  background: linear-gradient(135deg, #f5d98e 0%, #d4af37 30%, #b8860b 60%, #8b6914 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #e5e5e5 30%, #a3a3a3 60%, #737373 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -210,7 +210,7 @@ body {
 
 /* Gold gradient background for icons/buttons */
 .bg-gradient-gold {
-  background: linear-gradient(135deg, #f5d98e 0%, #d4af37 30%, #b8860b 70%, #8b6914 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #e5e5e5 30%, #a3a3a3 70%, #737373 100%);
 }
 
 /* Loading skeleton */
@@ -245,5 +245,5 @@ body {
 .filter-btn.active {
   background: linear-gradient(135deg, var(--gold-light), var(--gold));
   color: black;
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }

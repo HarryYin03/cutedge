@@ -81,8 +81,8 @@ export default function About() {
                 className="group p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-carbon-700/50 neon-border card-hover"
               >
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-gold flex items-center justify-center mb-3 sm:mb-4 group-hover:neon-glow transition-all duration-300">
-                  <feature.icon size={20} className="text-white sm:hidden" />
-                  <feature.icon size={24} className="text-white hidden sm:block" />
+                  <feature.icon size={20} className="text-black sm:hidden" />
+                  <feature.icon size={24} className="text-black hidden sm:block" />
                 </div>
                 <h3 className="text-lg sm:text-xl font-semibold mb-1.5 sm:mb-2 group-hover:text-gradient-neon transition-all duration-300">
                   {feature.title}

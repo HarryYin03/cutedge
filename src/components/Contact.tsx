@@ -105,8 +105,8 @@ export default function Contact() {
             <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-carbon-800/50 neon-border">
               <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-gold flex items-center justify-center flex-shrink-0">
-                  <Mail size={20} className="text-white sm:hidden" />
-                  <Mail size={24} className="text-white hidden sm:block" />
+                  <Mail size={20} className="text-black sm:hidden" />
+                  <Mail size={24} className="text-black hidden sm:block" />
                 </div>
                 <div>
                   <h3 className="text-base sm:text-lg font-semibold">Email Us</h3>
